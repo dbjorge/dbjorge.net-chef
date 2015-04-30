@@ -13,8 +13,15 @@ cookbook_path            ["#{current_dir}/../cookbooks"]
 # AWS config
 knife[:aws_credential_file] = ENV['AWS_CREDENTIAL_FILE']
 knife[:flavor] = 't2.micro'
-knife[:image] = 'ami-1ecae776' # Amazon Linux 64-bit 2015.03
 knife[:availability_zone] = nil # Allow Amazon to choose
 knife[:aws_ssh_key_id] = 'chef-node-ssh-key'
+knife[:identity_file] = "#{current_dir}/chef-node-ssh-key.pem"
 knife[:region] = 'us-east-1'
-knife[:ssh_user] = 'ec2-user'
+
+# Ubuntu Server 14.04 LTS (HVM), SSD Volume Type, 64-bit
+knife[:image] = 'ami-d05e75b8'
+knife[:ssh_user] = 'ubuntu'
+
+# Amazon Linux AMI 2015.03 (HVM), SSD Volume Type, 64-bit
+# knife[:image] = 'ami-1ecae776'
+# knife[:ssh_user] = 'ec2-user'
