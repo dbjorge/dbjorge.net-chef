@@ -16,14 +16,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-server_password = data_bag_item(
+# Put this before everything else - without forcing the apt-get update,
+# the mumble install sometimes fails
+include_recipe 'apt'
+
+server_creds = data_bag_item(
   node['mumble_service']['passwords']['data_bag'],
   node['mumble_service']['passwords']['server_item'])
+server_password = server_creds['password']
 
-superuser_password = data_bag_item(
+superuser_creds = data_bag_item(
   node['mumble_service']['passwords']['data_bag'],
   node['mumble_service']['passwords']['superuser_item'])
+superuser_password = superuser_creds['password']
 
-node.default['mumble_server']['server_password'] = server_password
+node.default['mumble_server']['config']['server_password'] = server_password
 include_recipe 'mumble_server'
 mumble_server_supw superuser_password
