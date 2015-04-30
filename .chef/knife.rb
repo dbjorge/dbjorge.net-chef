@@ -9,3 +9,11 @@ validation_client_name   "dbjorge-validator"
 validation_key           "#{current_dir}/dbjorge-validator.pem"
 chef_server_url          "https://api.opscode.com/organizations/dbjorge"
 cookbook_path            ["#{current_dir}/../cookbooks"]
+
+# AWS config
+knife[:aws_credential_file] = ENV['AWS_CREDENTIAL_FILE']
+knife[:flavor] = 't2.micro'
+knife[:image] = 'ami-1ecae776' # Amazon Linux 64-bit 2015.03
+knife[:availability_zone] = nil # Allow Amazon to choose
+knife[:aws_ssh_key_id] = 'chef-node-ssh-key'
+knife[:region] = 'us-east-1'
