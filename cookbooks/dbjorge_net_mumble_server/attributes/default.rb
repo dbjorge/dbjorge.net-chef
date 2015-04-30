@@ -1,9 +1,9 @@
 default['mumble_server']['config']['welcometext'] = '<br />Welcome to mumble.dbjorge.net<br />'
 
-# The passwords bag should be encrypted using the default secret file from
-# Chef::Config[:encrypted_data_bag_secret], typically /etc/chef/encrypted_data_bag_secret
+# The passwords bag should be non-encrypted - if you don't trust hosted Chef or its attackers
+# with your mumble passwords, improve this to use an encrypted data bag/chef-vault/etc.
 #
-# Both password values should contain a string value under the "password" key
-default['mumble_service']['passwords_data_bag_name'] = 'passwords'
-default['mumble_service']['server_password_key_name'] = 'mumble_server_password'
-default['mumble_service']['superuser_password_key_name'] = 'mumble_superuser_password'
+# Both password items should be of the form {"password": "hunter2"}
+default['mumble_service']['passwords']['data_bag'] = 'passwords'
+default['mumble_service']['passwords']['server_item'] = 'mumble_server'
+default['mumble_service']['passwords']['superuser_item'] = 'mumble_superuser'

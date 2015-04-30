@@ -16,16 +16,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-server_creds = Chef::EncryptedDataBagItem.load(
-  node['mumble_service']['passwords_data_bag_name'],
-  node['mumble_service']['server_password_key_name'])
+server_password = data_bag_item(
+  node['mumble_service']['passwords']['data_bag'],
+  node['mumble_service']['passwords']['server_item'])
 
-node.default['mumble_server']['server_password'] = server_creds['password']
+superuser_password = data_bag_item(
+  node['mumble_service']['passwords']['data_bag'],
+  node['mumble_service']['passwords']['superuser_item'])
 
+node.default['mumble_server']['server_password'] = server_password
 include_recipe 'mumble_server'
-
-supw_creds = Chef::EncryptedDataBagItem.load(
-  node['mumble_service']['passwords_data_bag_name'],
-  node['mumble_service']['superuser_password_key_name'])
-
-mumble_server_supw node['mumble_service']['supw_password']
+mumble_server_supw superuser_password
