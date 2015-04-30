@@ -30,6 +30,6 @@ superuser_creds = data_bag_item(
   node['mumble_service']['passwords']['superuser_item'])
 superuser_password = superuser_creds['password']
 
-node.default['mumble_server']['config']['server_password'] = server_password
+node.default['mumble_server']['config']['serverpassword'] = server_password
 include_recipe 'mumble_server'
 mumble_server_supw superuser_password

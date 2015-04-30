@@ -4,7 +4,7 @@ maintainer_email 'dbjorge@gmail.com'
 license          'apache2'
 description      'Installs/Configures dbjorge_net_mumble_server'
 long_description 'Installs/Configures dbjorge_net_mumble_server'
-version          '0.1.5'
+version          '0.1.7'
 
 depends          'mumble_server', '~>0.1.0'
 depends          'apt', '~>2.7.0'
