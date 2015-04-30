@@ -17,3 +17,4 @@ knife[:image] = 'ami-1ecae776' # Amazon Linux 64-bit 2015.03
 knife[:availability_zone] = nil # Allow Amazon to choose
 knife[:aws_ssh_key_id] = 'chef-node-ssh-key'
 knife[:region] = 'us-east-1'
+knife[:ssh_user] = 'ec2-user'
