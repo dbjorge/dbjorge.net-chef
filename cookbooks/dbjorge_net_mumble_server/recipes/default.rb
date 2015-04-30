@@ -17,4 +17,4 @@
 # limitations under the License.
 
 include_recipe 'dbjorge_net_mumble_server::mumble_service'
-include_recipe 'dbjorge_net_mumble_server::mumble_runtime_config'
+include_recipe 'dbjorge_net_mumble_server::mumble_runtime_Config'
